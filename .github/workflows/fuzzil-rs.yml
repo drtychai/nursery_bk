@@ -2,9 +2,9 @@ name: fuzzil-rs
 
 on:
   push:
-    branches: [ master ]
+    paths: rust/fuzzil-rs
   pull_request:
-    branches: [ master ]
+    paths: rust/fuzzil-rs
 
 env:
   CARGO_TERM_COLOR: always
