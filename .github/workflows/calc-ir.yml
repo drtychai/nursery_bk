@@ -2,9 +2,9 @@ name: calc-ir
 
 on:
   push:
-    branches: [ master ]
+    paths: rust/calc-ir
   pull_request:
-    branches: [ master ]
+    paths: rust/calc-ir
 
 env:
   CARGO_TERM_COLOR: always
