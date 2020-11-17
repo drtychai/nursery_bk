@@ -67,77 +67,77 @@ mod tests {
     use super::BaseType;
 
     #[test]
-    fn base_type_nothing() {
+    fn nothing() {
         assert_eq!(BaseType::nothing().0, 0 << 0);
     }
 
     #[test]
-    fn base_type_undefined() {
+    fn undefined() {
         assert_eq!(BaseType::undefined().0, 1 << 0);
     }
 
     #[test]
-    fn base_type_integer() {
+    fn integer() {
         assert_eq!(BaseType::integer().0, 1 << 1);
     }
 
     #[test]
-    fn base_type_float() {
+    fn float() {
         assert_eq!(BaseType::float().0, 1 << 2);
     }
 
     #[test]
-    fn base_type_string() {
+    fn string() {
         assert_eq!(BaseType::string().0, 1 << 3);
     }
 
     #[test]
-    fn base_type_boolean() {
+    fn boolean() {
         assert_eq!(BaseType::boolean().0, 1 << 4);
     }
 
     #[test]
-    fn base_type_object() {
+    fn object() {
         assert_eq!(BaseType::object().0, 1 << 5);
     }
 
     #[test]
-    fn base_type_function() {
+    fn function() {
         assert_eq!(BaseType::function().0, 1 << 6);
     }
 
     #[test]
-    fn base_type_constructor() {
+    fn constructor() {
         assert_eq!(BaseType::constructor().0, 1 << 7);
     }
 
     #[test]
-    fn base_type_unknown() {
+    fn unknown() {
         assert_eq!(BaseType::unknown().0, 1 << 8);
     }
 
     #[test]
-    fn base_type_bigint() {
+    fn bigint() {
         assert_eq!(BaseType::bigint().0, 1 << 9);
     }
 
     #[test]
-    fn base_type_regexp() {
+    fn regexp() {
         assert_eq!(BaseType::regexp().0, 1 << 10);
     }
 
     #[test]
-    fn base_type_iterable() {
+    fn iterable() {
         assert_eq!(BaseType::iterable().0, 1 << 11);
     }
 
     #[test]
-    fn base_type_optional() {
+    fn optional() {
         assert_eq!(BaseType::optional().0, 1 << 12);
     }
 
     #[test]
-    fn base_type_list() {
+    fn list() {
         assert_eq!(BaseType::list().0, 1 << 13);
     }
 }
