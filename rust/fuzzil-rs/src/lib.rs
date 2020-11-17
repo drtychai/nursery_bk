@@ -88,7 +88,7 @@
 //! .string + .object             
 //!     => definiteType = .string | .object,   possibleType = .string | .object
 //!
-//! .string | (.string + .object) 
+//! .string | (.string + .object)
 //!     => definiteType = .string,             possibleType = .string | .object
 //! ```
 
