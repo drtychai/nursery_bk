@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 hibitset = "*"
+type-operators = { path = "./type-operators-rs", version = "*" }
