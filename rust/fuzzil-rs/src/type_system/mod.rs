@@ -1,146 +1,201 @@
 pub mod base_type;
 use base_type::BaseType;
 
-#[derive(Debug, Copy, Clone, PartialEq)]
-pub struct Type {
-    definite_type: BaseType,
-    possible_type: BaseType,
+trait Type {
+    fn definite_type(&self) -> i32;
+    fn possible_type(&self) -> i32;
 }
 
-impl Type {
-    pub fn new(definite_type: BaseType, possible_type: BaseType) -> Self {
-        Type {
-            definite_type: definite_type,
-            possible_type: possible_type,
-        }
+impl Type for base_type::Nothing {
+    fn definite_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
     }
 
-    pub fn undefined() -> Self {
-        Type {
-            definite_type: BaseType::undefined(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Undefined {
+    fn definite_type(&self) -> i32 {
+        base_type::Undefined::new().raw_value()
     }
 
-    pub fn integer() -> Self {
-        Type {
-            definite_type: BaseType::integer(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+
+impl Type for base_type::Integer {
+    fn definite_type(&self) -> i32 {
+        base_type::Integer::new().raw_value()
     }
 
-    pub fn bigint() -> Self {
-        Type {
-            definite_type: BaseType::bigint(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Float {
+    fn definite_type(&self) -> i32 {
+        base_type::Float::new().raw_value()
     }
 
-    pub fn float() -> Self {
-        Type {
-            definite_type: BaseType::float(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::JString {
+    fn definite_type(&self) -> i32 {
+        base_type::JString::new().raw_value()
     }
 
-    pub fn string() -> Self {
-        Type {
-            definite_type: BaseType::string(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Boolean {
+    fn definite_type(&self) -> i32 {
+        base_type::Boolean::new().raw_value()
     }
 
-    pub fn boolean() -> Self {
-        Type {
-            definite_type: BaseType::boolean(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Object {
+    fn definite_type(&self) -> i32 {
+        base_type::Object::new().raw_value()
     }
 
-    pub fn regexp() -> Self {
-        Type {
-            definite_type: BaseType::regexp(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Function {
+    fn definite_type(&self) -> i32 {
+        base_type::Function::new().raw_value()
     }
 
-    pub fn iterable() -> Self {
-        Type {
-            definite_type: BaseType::iterable(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Constructor {
+    fn definite_type(&self) -> i32 {
+        base_type::Constructor::new().raw_value()
     }
 
-    pub fn unknown() -> Self {
-        Type {
-            definite_type: BaseType::unknown(),
-            possible_type: BaseType::nothing(),
-        }
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Unknown {
+    fn definite_type(&self) -> i32 {
+        base_type::Unknown::new().raw_value()
+    }
+
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::BigInt {
+    fn definite_type(&self) -> i32 {
+        base_type::BigInt::new().raw_value()
+    }
+
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::RegExp {
+    fn definite_type(&self) -> i32 {
+        base_type::RegExp::new().raw_value()
+    }
+
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Iter {
+    fn definite_type(&self) -> i32 {
+        base_type::Iter::new().raw_value()
+    }
+
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::Opt {
+    fn definite_type(&self) -> i32 {
+        base_type::Opt::new().raw_value()
+    }
+
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
+    }
+}
+impl Type for base_type::List {
+    fn definite_type(&self) -> i32 {
+        base_type::List::new().raw_value()
+    }
+
+    fn possible_type(&self) -> i32 {
+        base_type::Nothing::new().raw_value()
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{BaseType, Type};
+    use super::base_type::*;
+    use super::Type;
 
     #[test]
     fn consturctor() {
-        let t = Type::new(BaseType::integer(), BaseType::float());
-        assert_eq!(t.definite_type.0, BaseType::integer().0);
-        assert_eq!(t.possible_type.0, BaseType::float().0);
+        assert_eq!(Constructor::new().definite_type(), Constructor::new().raw_value());
+        assert_eq!(Constructor::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn undefined() {
-        let t = Type::undefined();
-        assert_eq!(t.definite_type.0, BaseType::undefined().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(Undefined::new().definite_type(), Undefined::new().raw_value());
+        assert_eq!(Undefined::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn integer() {
-        let t = Type::integer();
-        assert_eq!(t.definite_type.0, BaseType::integer().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(Integer::new().definite_type(), Integer::new().raw_value());
+        assert_eq!(Integer::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn bigint() {
-        let t = Type::bigint();
-        assert_eq!(t.definite_type.0, BaseType::bigint().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(BigInt::new().definite_type(), BigInt::new().raw_value());
+        assert_eq!(BigInt::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn float() {
-        let t = Type::float();
-        assert_eq!(t.definite_type.0, BaseType::float().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(Float::new().definite_type(), Float::new().raw_value());
+        assert_eq!(Float::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
-    fn string() {
-        let t = Type::string();
-        assert_eq!(t.definite_type.0, BaseType::string().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+    fn jstring() {
+        assert_eq!(JString::new().definite_type(), JString::new().raw_value());
+        assert_eq!(JString::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn boolean() {
-        let t = Type::boolean();
-        assert_eq!(t.definite_type.0, BaseType::boolean().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(Boolean::new().definite_type(), Boolean::new().raw_value());
+        assert_eq!(Boolean::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn regexp() {
-        let t = Type::regexp();
-        assert_eq!(t.definite_type.0, BaseType::regexp().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(RegExp::new().definite_type(), RegExp::new().raw_value());
+        assert_eq!(RegExp::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn iterable() {
-        let t = Type::iterable();
-        assert_eq!(t.definite_type.0, BaseType::iterable().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(Iter::new().definite_type(), Iter::new().raw_value());
+        assert_eq!(Iter::new().possible_type(), Nothing::new().raw_value());
     }
     #[test]
     fn unknown() {
-        let t = Type::unknown();
-        assert_eq!(t.definite_type.0, BaseType::unknown().0);
-        assert_eq!(t.possible_type.0, BaseType::nothing().0);
+        assert_eq!(Unknown::new().definite_type(), Unknown::new().raw_value());
+        assert_eq!(Unknown::new().possible_type(), Nothing::new().raw_value());
     }
 }
